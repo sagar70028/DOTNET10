@@ -18,7 +18,7 @@ builder.Services.AddCors(options =>
                         .AllowAnyHeader());
 });
 
-app.UseCors("AllowAll");
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
@@ -26,6 +26,7 @@ var app = builder.Build();
 //    app.UseSwagger();
 //    app.UseSwaggerUI();
 //}
+app.UseCors("AllowAll");
 app.UseSwagger();
 app.UseSwaggerUI();
 app.UseHttpsRedirection();
