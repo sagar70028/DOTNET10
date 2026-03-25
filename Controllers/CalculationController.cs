@@ -15,7 +15,7 @@ namespace MyApi.Controllers
         }
 
 
-        [HttpGet()]
+        [HttpPost()]
         public async Task<IActionResult> SendNotification([FromBody] CalculationRequest request)
         {
            int result= _calculation.Add(request.Num1, request.Num2);
