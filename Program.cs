@@ -10,7 +10,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<Calculation>();
 //var pdfService = app.Services.GetRequiredService<PdfService>();
 //await pdfService.InitAsync();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy => policy.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 
+app.UseCors("AllowAll");
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())
@@ -23,6 +31,7 @@ app.UseSwaggerUI();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
 
 app.MapControllers();
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
